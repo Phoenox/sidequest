@@ -1,0 +1,47 @@
+﻿name: .NET
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'zulu'
+          
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 8.0.x
+          
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Setup sonarcloud analysis
+        run: |
+          dotnet tool install --global dotnet-sonarscanner
+          dotnet sonarscanner begin \
+            /k:"Phoenox_sidequest" /o:"phoenox" \
+            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.host.url="https://sonarcloud.io" \
+            /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+        
+      - name: Build
+        run: dotnet build --no-restore
+        
+      - name: Test with code coverage
+        run: |
+          dotnet tool install --global dotnet-coverage
+          dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
+        
+      - name: Publish sonarcloud report
+        run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
