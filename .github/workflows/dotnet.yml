@@ -45,15 +45,12 @@ jobs:
         
       - name: Publish sonarcloud report
         run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
+      - name: Install .NET WASM Build Tools
+        run: dotnet workload install wasm-tools
         
       - name: Publish to release folder
-        run: dotnet publish SideQuest/SideQuest.csproj -c Release -o release --nologo
-          
-      - name: Change base tag in index.html from / to sidequest
-        run: sed -i 's/<base href="\/" \/>/<base href="\/sidequest\/" \/>/g' release/wwwroot/index.html
-
-      - name: Add .nojekyll file
-        run: touch release/wwwroot/.nojekyll
+        run: dotnet publish SideQuest/SideQuest.csproj -c:Release -p:GHPages=true -o release --nologo
 
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
