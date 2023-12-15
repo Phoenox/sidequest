@@ -1,7 +1,5 @@
 namespace SideQuest.Domain;
 
-using Data;
-
 public static class Progression
 {
 	public static Skill MarkQuestAsDone(Skill skill, Quest quest) {

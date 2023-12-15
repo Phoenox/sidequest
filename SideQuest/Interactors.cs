@@ -16,4 +16,10 @@ public static class Interactors
 		SkillProvider.UpdateSkill(updatedSkill);
 		return updatedSkill;
 	}
+	
+	public static Skill AddQuest(Skill skill, Quest quest) {
+		var updatedSkill = Domain.Structure.AddQuest(skill, quest);
+		SkillProvider.UpdateSkill(updatedSkill);
+		return updatedSkill;
+	}
 }

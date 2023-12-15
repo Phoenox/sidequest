@@ -1,36 +1,61 @@
 @page "/skill/{id:guid}"
 
-@if (skill is not null)
-{
+@if (skill is not null) {
 	<h1>@skill.Name (@skill.Level): @skill.Xp XP</h1>
 	<h2>Quests</h2>
 	<ul>
-		@foreach (var quest in skill.Quests)
-		{
-			<li>@quest.Name 
+		@foreach (var quest in skill.Quests) {
+			<li>
+				@quest.Name (@quest.Xp XP)
 				<button onclick="@(() => MarkQuestAsDone(quest))">
 					Done!
 				</button>
 			</li>
 		}
 	</ul>
+
+	<button onclick="@OpenAddQuestDialog">Add Quest</button>
+	<dialog open="@isAddQuestDialogOpen">
+		<h2>Add Quest</h2>
+		<label for="questName">Name</label>
+		<input id="questName" type="text" @bind="newQuestName"/>
+		<label for="questXp">XP</label>
+		<input id="questXp" type="number" @bind="newQuestXp"/>
+		<button onclick="@AddQuest">Add</button>
+		<button onclick="@CloseAddQuestDialog">Cancel</button>
+	</dialog>
 }
 
 @code {
 	private Skill? skill;
-	
-	[Parameter] 
-	public Guid Id { get; set; }
-	
-	protected override void OnInitialized()
-	{
+
+	private bool isAddQuestDialogOpen = false;
+	private string newQuestName = string.Empty;
+	private int newQuestXp = 10;
+
+	[Parameter] public Guid Id { get; set; }
+
+	protected override void OnInitialized() {
 		skill = Interactors.GetSkill(Id);
 		base.OnInitialized();
 	}
 	
-	private void MarkQuestAsDone(Quest quest)
-	{
+	private void MarkQuestAsDone(Quest quest) {
 		skill = Interactors.MarkQuestAsDone(skill!, quest);
 		StateHasChanged();
+	}
+
+	private void OpenAddQuestDialog()
+		=> isAddQuestDialogOpen = true;
+	
+	private void CloseAddQuestDialog()
+		=> isAddQuestDialogOpen = false;
+	
+	private void AddQuest() {
+		var quest = new Quest(newQuestName, newQuestXp);
+		skill = Interactors.AddQuest(skill!, quest);
+		newQuestName = string.Empty;
+		newQuestXp = 10;
+		CloseAddQuestDialog();
 	}
 }
