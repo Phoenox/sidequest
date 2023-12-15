@@ -18,13 +18,38 @@ else
 	</ul>
 }
 
+<button onclick="@OpenAddSkillDialog">Add Skill</button>
+<dialog open="@isAddSkillDialogOpen">
+	<h2>Add Skill</h2>
+	<label for="skillName">Name</label>
+	<input id="skillName" type="text" @bind="newSkillName"/>
+	<button onclick="@AddSkill">Add</button>
+	<button onclick="@CloseAddSkillDialog">Cancel</button>
+</dialog>
+
 @code {
 	private IEnumerable<Skill>? skills;
+	
+	private bool isAddSkillDialogOpen;
+	private string newSkillName = string.Empty;
 
 	protected override void OnInitialized()
 	{
 		skills = Interactors.GetSkills();
 		base.OnInitialized();
+	}
+	
+	private void OpenAddSkillDialog()
+		=> isAddSkillDialogOpen = true;
+	
+	private void CloseAddSkillDialog()
+		=> isAddSkillDialogOpen = false;
+	
+	private void AddSkill() {
+		var skill = new Skill(newSkillName);
+		skills = Interactors.AddSkill(skill);
+		newSkillName = string.Empty;
+		CloseAddSkillDialog();
 	}
 }
 

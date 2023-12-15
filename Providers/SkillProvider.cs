@@ -35,4 +35,7 @@ public static class SkillProvider
 		var index = Skills.FindIndex(s => s.Id == skill.Id);
 		Skills[index] = skill;
 	}
+	
+	public static void AddSkill(Skill skill)
+		=> Skills.Add(skill);
 }
