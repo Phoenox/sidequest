@@ -1,0 +1,16 @@
+{
+  "name": "sideQuest",
+  "short_name": "sideQuest",
+  "start_url": "/sidequest/",
+  "scope":  "/sidequest/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#03173d",
+  "icons": [
+    {
+      "src": "sq.png",
+      "type": "image/png",
+      "sizes": "250x250"
+    }
+  ]
+}
