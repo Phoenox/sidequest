@@ -14,7 +14,19 @@ else
 	<ul>
 		@foreach (var skill in skills)
 		{
-			<li><a href="skill/@skill.Id"><strong>@skill.Name (@skill.Level):</strong> @skill.Xp XP</a></li>
+			<li>
+				<a href="skill/@skill.Id"><strong>@skill.Name (@skill.Level):</strong> @skill.Xp XP</a>
+				<button onclick="@OpenRemoveSkillDialog">Remove</button>
+				<dialog open="@isRemoveSkillDialogOpen">
+					<h2>Remove Skill</h2>
+					<p>
+						Are you sure you want to remove the skill @skill.Name?<br>
+						This will remove also remove all quests associated with this skill.
+					</p>
+					<button onclick="@(() => RemoveSkill(skill))">Yes</button>
+					<button onclick="@CloseRemoveSkillDialog">No</button>
+				</dialog>
+			</li>
 		}
 	</ul>
 }
@@ -31,6 +43,7 @@ else
 @code {
 	private IEnumerable<Skill>? skills;
 	
+	private bool isRemoveSkillDialogOpen;
 	private bool isAddSkillDialogOpen;
 	private string newSkillName = string.Empty;
 
@@ -51,6 +64,18 @@ else
 		skills = Interactors.AddSkill(skill);
 		newSkillName = string.Empty;
 		CloseAddSkillDialog();
+	}
+	
+	private void OpenRemoveSkillDialog()
+		=> isRemoveSkillDialogOpen = true;
+	
+	private void CloseRemoveSkillDialog()
+		=> isRemoveSkillDialogOpen = false;
+	
+	private void RemoveSkill(Skill skill) {
+		skills = Interactors.RemoveSkill(skill);
+		CloseRemoveSkillDialog();
+		StateHasChanged();
 	}
 }
 

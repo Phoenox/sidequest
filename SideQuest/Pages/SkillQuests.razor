@@ -11,6 +11,13 @@
 				<button onclick="@(() => MarkQuestAsDone(quest))">
 					Done!
 				</button>
+				<button onclick="@OpenRemoveQuestDialog">Remove</button>
+				<dialog open="@isRemoveQuestDialogOpen">
+					<h2>Remove Quest</h2>
+					<p>Are you sure you want to remove the quest @quest.Name?</p>
+					<button onclick="@(() => RemoveQuest(quest))">Yes</button>
+					<button onclick="@CloseRemoveQuestDialog">No</button>
+				</dialog>
 			</li>
 		}
 	</ul>
@@ -30,6 +37,7 @@
 @code {
 	private Skill? skill;
 
+	private bool isRemoveQuestDialogOpen;
 	private bool isAddQuestDialogOpen;
 	private string newQuestName = string.Empty;
 	private int newQuestXp = 10;
@@ -40,7 +48,7 @@
 		skill = Interactors.GetSkill(Id);
 		base.OnInitialized();
 	}
-	
+
 	private void MarkQuestAsDone(Quest quest) {
 		skill = Interactors.MarkQuestAsDone(skill!, quest);
 		StateHasChanged();
@@ -48,15 +56,27 @@
 
 	private void OpenAddQuestDialog()
 		=> isAddQuestDialogOpen = true;
-	
+
 	private void CloseAddQuestDialog()
 		=> isAddQuestDialogOpen = false;
-	
+
 	private void AddQuest() {
 		var quest = new Quest(newQuestName, newQuestXp);
 		skill = Interactors.AddQuest(skill!, quest);
 		newQuestName = string.Empty;
 		newQuestXp = 10;
 		CloseAddQuestDialog();
+	}
+
+	private void OpenRemoveQuestDialog()
+		=> isRemoveQuestDialogOpen = true;
+	
+	private void CloseRemoveQuestDialog()
+		=> isRemoveQuestDialogOpen = false;
+	
+	private void RemoveQuest(Quest quest) {
+		skill = Interactors.RemoveQuest(skill!, quest);
+		CloseRemoveQuestDialog();
+		StateHasChanged();
 	}
 }

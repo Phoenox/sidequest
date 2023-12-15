@@ -32,4 +32,10 @@ public class SkillProvider(ISyncLocalStorageService localStorageService)
 		var updatedSkills = skills.Append(skill);
 		SaveSkills(updatedSkills);
 	}
+	
+	public void RemoveSkill(Skill skill) {
+		var skills = GetSkills().ToList();
+		var updatedSkills = skills.Where(s => s.Id != skill.Id);
+		SaveSkills(updatedSkills);
+	}
 }

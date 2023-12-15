@@ -15,9 +15,20 @@ public class Interactors(SkillProvider skillProvider)
 		skillProvider.AddSkill(skill);
 		return skillProvider.GetSkills();
 	}
+
+	public IEnumerable<Skill> RemoveSkill(Skill skill) {
+		skillProvider.RemoveSkill(skill);
+		return skillProvider.GetSkills();
+	}
 	
 	public Skill AddQuest(Skill skill, Quest quest) {
 		var updatedSkill = Domain.Structure.AddQuest(skill, quest);
+		skillProvider.UpdateSkill(updatedSkill);
+		return updatedSkill;
+	}
+	
+	public Skill RemoveQuest(Skill skill, Quest quest) {
+		var updatedSkill = Domain.Structure.RemoveQuest(skill, quest);
 		skillProvider.UpdateSkill(updatedSkill);
 		return updatedSkill;
 	}
