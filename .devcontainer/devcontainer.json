@@ -1,4 +1,0 @@
-{
- "name": "C# (.NET)",
- "image": "mcr.microsoft.com/devcontainers/dotnet:0-8.0"
-}
