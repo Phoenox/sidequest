@@ -4,3 +4,27 @@
 
 <h1>Skills</h1>
 
+@if (skills is null)
+{
+	<p>Loading...</p>
+}
+else
+{
+	<ul>
+		@foreach (var skill in skills)
+		{
+			<li><a href="skill/@skill.Id"><strong>@skill.Name (@skill.Level):</strong> @skill.Xp XP</a></li>
+		}
+	</ul>
+}
+
+@code {
+	private IEnumerable<Skill>? skills;
+
+	protected override void OnInitialized()
+	{
+		skills = Interactors.GetSkills();
+		base.OnInitialized();
+	}
+}
+

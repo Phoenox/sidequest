@@ -1,0 +1,36 @@
+@page "/skill/{id:guid}"
+
+@if (skill is not null)
+{
+	<h1>@skill.Name (@skill.Level): @skill.Xp XP</h1>
+	<h2>Quests</h2>
+	<ul>
+		@foreach (var quest in skill.Quests)
+		{
+			<li>@quest.Name 
+				<button onclick="@(() => MarkQuestAsDone(quest))">
+					Done!
+				</button>
+			</li>
+		}
+	</ul>
+}
+
+@code {
+	private Skill? skill;
+	
+	[Parameter] 
+	public Guid Id { get; set; }
+	
+	protected override void OnInitialized()
+	{
+		skill = Interactors.GetSkill(Id);
+		base.OnInitialized();
+	}
+	
+	private void MarkQuestAsDone(Quest quest)
+	{
+		skill = Interactors.MarkQuestAsDone(skill!, quest);
+		StateHasChanged();
+	}
+}
