@@ -29,7 +29,7 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-kAleHw9\/ZqUr\/ma7WbYciPYp\/EOVdr\/+nI4B3t7iiuo=",
+      "hash": "sha256-MpLHa9WderwxDNmKn5xrq+XmV9EYdp6io5hB3pEq0gE=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -57,11 +57,11 @@
       "url": "_framework\/Blazored.LocalStorage.wasm"
     },
     {
-      "hash": "sha256-G0Un1VwMQ0vxkAaQjiTnFINk0smVTQYBHbNGYTpRr5M=",
+      "hash": "sha256-Y5xLlsDnC73tqvfbwzoLzrpTm2UyRjs88zPF8uusM60=",
       "url": "_framework\/Data.wasm"
     },
     {
-      "hash": "sha256-vgb7hGuTZ0\/A9yM\/KvBZBe+J0FlLszUiVtFiInvDcCc=",
+      "hash": "sha256-DhxtMIH2D7gekzNT2NaCVtZ1oqd7rKrlOwNMjJIuwnw=",
       "url": "_framework\/Domain.wasm"
     },
     {
@@ -125,11 +125,11 @@
       "url": "_framework\/netstandard.wasm"
     },
     {
-      "hash": "sha256-ZZHdbagmlYubk6erBf+ns8BCbOkHGoVhuZgZ+CEWMac=",
+      "hash": "sha256-aGDVSiWAI2KS83stqMBxbOc95ruMrluFnJL7GGfwsL0=",
       "url": "_framework\/Providers.wasm"
     },
     {
-      "hash": "sha256-Q5LVA7qrAaNasjz88EYFqIaaih0QoXQvg2hEF0kAvfM=",
+      "hash": "sha256-62VGMstIFqVZ5K8asL2yTruwRifdFFb\/32684shfD7Q=",
       "url": "_framework\/SideQuest.wasm"
     },
     {
@@ -229,5 +229,5 @@
       "url": "_content\/Blazicons\/Blazicons.bundle.scp.css"
     }
   ],
-  "version": "0DQQTaFF"
+  "version": "G7vVAV62"
 };
