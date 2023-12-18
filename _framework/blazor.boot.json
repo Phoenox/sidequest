@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "SideQuest",
   "resources": {
-    "hash": "sha256-PFJsTKeggWWOTGZ04zWp07sCnf+IR82WOhxDjeyKtU8=",
+    "hash": "sha256-Igifrm8lQ3rUsUnhCYvMh37KzevV9jP4ODxWkR0ghWc=",
     "jsModuleNative": {
       "dotnet.native.8.0.0.qlwupmnpnx.js": "sha256-8su0dfqXmrR6nSS80nF/thphOx+y1Myj7Zbp7+5wV3Y="
     },
@@ -21,8 +21,8 @@
       "Blazicons.wasm": "sha256-ZC7nXZivYr+tzxAc9MWzQCwaJzGcdHzGsl+IJx+PAmg=",
       "BlazorComponentUtilities.wasm": "sha256-3TgvS/HUtEk/6K33ycKciSd5J6RBnSq8vEqA5ZhHjj0=",
       "Blazored.LocalStorage.wasm": "sha256-xHBGFCMjDjvvTwtMvgaMBNmQk9JdVhGmws2/GMZlxrI=",
-      "Data.wasm": "sha256-ndvTgKrHkvqBw+25QPSz1ZM2jovNu0ShGTiO9T3cHiQ=",
-      "Domain.wasm": "sha256-Xh2Yf5sUw0058mxwncgPVOtFzxUhEA9B4+FBbGqRYwE=",
+      "Data.wasm": "sha256-gvztDlvsP3aiwDtIbT7HcbVTYW1ys3C7d8hyTLcZPRg=",
+      "Domain.wasm": "sha256-kl5fFpP403D0C3MbAedjxw+ziAKcmvguq6G73Hh0cdg=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-71+nueIoXMFJul0Jhv92Z0c7YI9VUmcIyMAAuS6hYXE=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-ivj7kxN8rrhTm1UV0H7dhsOewu6rhATFU2ZAG/YKLvA=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-Ws5szf6fWPAXna+XyWsAhavx+WDFcA/91DQ7iPRPCMs=",
@@ -38,8 +38,8 @@
       "Microsoft.JSInterop.wasm": "sha256-0D9/j6imBAuGTz7kx1gtrH+sg/kiDYF3I1B7Gu68nCM=",
       "Microsoft.JSInterop.WebAssembly.wasm": "sha256-CQVLCKiSxLN5ghyJZG3mhnMGRROdqrbNUjtAXB0nWb8=",
       "netstandard.wasm": "sha256-lp6oR1lEBtWPzea+86v2PwX02/RkkCBmUE3dqEtZN8k=",
-      "Providers.wasm": "sha256-jEpZGcsBoIP/W3IqpeMLFFX36pCyLOMGijqHFja/A6U=",
-      "SideQuest.wasm": "sha256-qsFl5Tz2L4WLTkvlCVJ2yeDbDaY+Ci9YxmsA0anKpyk=",
+      "Providers.wasm": "sha256-5Xbgxo+fpU/kJ+vbuSVcoaZ75CQDN6BpPh9kxtcQ+7Y=",
+      "SideQuest.wasm": "sha256-kcd5++O9nnhFOhQ0xHiwIp5NU1rr7dr+eg0T+Fx4E14=",
       "System.Collections.Concurrent.wasm": "sha256-/iT3Y71AMV0IxlknaXWQf8WJXGsB5oDfys+6PzvYG34=",
       "System.Collections.wasm": "sha256-hTS4UTMfzRYb9h3hkauauLnnrnBbRpM5xctwHpJ+ukE=",
       "System.ComponentModel.wasm": "sha256-Kg+Te+dUBA6OiPS3uVj+Poyamhf9bMlcL96uc+bTYWc=",
