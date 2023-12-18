@@ -50,7 +50,13 @@ jobs:
         run: dotnet workload install wasm-tools
         
       - name: Publish to release folder
-        run: dotnet publish SideQuest/SideQuest.csproj -c:Release -p:GHPages=true -o release --nologo
+        run: dotnet publish SideQuest/SideQuest.csproj -c:Release -o release --nologo
+
+      - name: Change base tag in index.html from / to sidequest
+        run: sed -i 's/<base href="\/" \/>/<base href="\/sidequest\/" \/>/g' release/wwwroot/index.html
+
+      - name: Add .nojekyll file
+        run: touch release/wwwroot/.nojekyll
         
       - name: Fix service-worker-assets.js hashes
         working-directory: release/wwwroot
